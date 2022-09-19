@@ -19,3 +19,13 @@ function removeBook(title, author){
     addToLocalStorage(); 
 }
 
+const books = document.getElementById('books');
+
+function createBook(book) {
+    const div = document.createElement('div');
+    div.className = 'book';
+    div.innerHTML=`<p class="author">${book.author}</p>
+    <p class="title">${book.title}</p>
+    <button class="remove-btn">remove</button> <hr>`;
+}
+
