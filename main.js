@@ -20,9 +20,8 @@ class Library {
   createBookDiv(book) {
     const div = document.createElement("div");
     div.className = "book";
-    div.innerHTML = `<p class="author">${book.author}</p>
-      <p class="title">${book.title}</p>
-      <button class="remove-btn">remove</button> <hr>`;
+    div.innerHTML = `<p>"${book.title}" by ${book.author}</p>
+      <button class="remove-btn">Remove</button>`;
 
     const removeBtn = div.querySelector(".remove-btn");
     removeBtn.addEventListener("click", () => {
