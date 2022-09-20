@@ -14,17 +14,18 @@ class Library {
 
   removeBook(title, author) {
     this.booksList = this.booksList.filter(
-      (item) => item.title !== title && item.author !== author);
+      (item) => item.title !== title && item.author !== author,
+    );
   }
 
   createBookDiv(book) {
-    const div = document.createElement("div");
-    div.className = "book";
+    const div = document.createElement('div');
+    div.className = 'book';
     div.innerHTML = `<p>"${book.title}" by ${book.author}</p>
       <button class="remove-btn">Remove</button>`;
 
-    const removeBtn = div.querySelector(".remove-btn");
-    removeBtn.addEventListener("click", () => {
+    const removeBtn = div.querySelector('.remove-btn');
+    removeBtn.addEventListener('click', () => {
       this.removeBook(book.title, book.author);
       div.remove();
       localStorage.setItem('bookList', JSON.stringify(this.booksList));
@@ -33,17 +34,17 @@ class Library {
   }
 }
 
-const title = document.querySelector("#title");
-const author = document.querySelector("#author");
-const form = document.getElementById("form");
-const booksSection = document.getElementById("books");
+const title = document.querySelector('#title');
+const author = document.querySelector('#author');
+const form = document.getElementById('form');
+const booksSection = document.getElementById('books');
 
-let library = new Library();
+const library = new Library();
 
-window.addEventListener("load", () => {
-  if (localStorage.getItem("bookList")) {
-    library.booksList = JSON.parse(localStorage.getItem("bookList"));
-    if (library.booksList.length != 0) {
+window.addEventListener('load', () => {
+  if (localStorage.getItem('bookList')) {
+    library.booksList = JSON.parse(localStorage.getItem('bookList'));
+    if (library.booksList.length !== 0) {
       library.booksList.forEach((item) => {
         const newBook = library.createBookDiv(item);
         booksSection.append(newBook);
@@ -52,14 +53,14 @@ window.addEventListener("load", () => {
   }
 });
 
-form.addEventListener("submit", (e) => {
+form.addEventListener('submit', (e) => {
   library.addBook(title.value, author.value);
-  let obj = {
+  const obj = {
     title: title.value,
     author: author.value,
   };
-  title.value = "";
-  author.value = "";
+  title.value = '';
+  author.value = '';
   const newBookDiv = library.createBookDiv(obj);
 
   booksSection.append(newBookDiv);
