@@ -27,6 +27,12 @@ function createBookDiv(book) {
   div.innerHTML = `<p class="author">${book.author}</p>
     <p class="title">${book.title}</p>
     <button class="remove-btn">remove</button> <hr>`;
+
+    const removeBtn = div.querySelector('.remove-btn');
+    removeBtn.addEventListener('click', () => {
+        removeBook(book.title, book.author);
+        div.remove();
+    });
   return div;
 }
 
@@ -52,6 +58,8 @@ form.addEventListener("submit", (e) => {
     title: title.value,
     author: author.value,
   };
+  title.value='';
+  author.value='';
   let newBookDiv = createBookDiv(obj);
   booksSection.append(newBookDiv);
   e.preventDefault();
