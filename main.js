@@ -38,7 +38,7 @@ const booksSection = document.getElementById("books");
 window.addEventListener("load", () => {
   if (localStorage.getItem("bookList")) {
     booksList = JSON.parse(localStorage.getItem("bookList"));
-
+    console.log(booksList);
     for (let item of booksList) {
       let newBook = createBookDiv(item);
       booksSection.append(newBook);
@@ -46,7 +46,7 @@ window.addEventListener("load", () => {
   }
 });
 
-form.addEventListener("submit", () => {
+form.addEventListener("submit", (e) => {
   addBook(title.value, author.value);
   let obj = {
     title: title.value,
@@ -54,4 +54,6 @@ form.addEventListener("submit", () => {
   };
   let newBookDiv = createBookDiv(obj);
   booksSection.append(newBookDiv);
+  e.preventDefault();
 });
+
