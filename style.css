@@ -1,5 +1,68 @@
-input,
-button {
-  display: block;
-  margin-bottom: 10px;
+
+* {
+  font-family: 'Comic Neue', cursive;
+  font-weight: 600;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
+#main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 20px;
+}
+
+#books {
+  border: 5px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.book {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+#books :nth-of-type(even){
+  background-color: #dddddd;
+}
+
+button {
+  background-color: white;
+  border: 2px solid black;
+  box-shadow: 2px 2px 0px black;
+  padding: 5px;
+}
+
+.divider {
+  width: 100px;
+  border: 2px solid black;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  width:40vh;
+  align-items: center;
+}
+
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 5px solid black;
+}
+
+form > button {
+  align-self: flex-end;
+}
+
