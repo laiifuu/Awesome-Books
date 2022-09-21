@@ -7,13 +7,20 @@
   padding: 0;
 }
 
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height:100vh;
+}
+
 #main {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  
   gap: 20px;
   padding: 20px;
 }
@@ -73,6 +80,10 @@ form > button {
 
 .hidden {
   display: none;
+}
+
+.active {
+  display: flex;
 }
 
 img {
