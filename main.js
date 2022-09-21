@@ -66,3 +66,43 @@ form.addEventListener('submit', (e) => {
   booksSection.append(newBookDiv);
   e.preventDefault();
 });
+
+const burgerMenu = document.getElementById('burger-menu');
+const menu = document.querySelector('.nav-menu');
+const menuItems = document.querySelectorAll('.nav-item');
+const contact =document.getElementById('contact-info');
+
+
+
+burgerMenu.addEventListener('click',() => {
+    if (burgerMenu.getAttribute('data-toggled') === 'false') {
+        burgerMenu.classList.add('open');
+        burgerMenu.setAttribute('data-toggled', 'true');
+      } else {
+        burgerMenu.classList.remove('open');
+        burgerMenu.setAttribute('data-toggled', 'false');
+      }
+      burgerMenu.classList.toggle('burger-menu-toggled');
+      menu.classList.toggle('toggled-menu');
+    //   body.classList.toggle('no-scroll');
+});
+
+document.querySelectorAll('.one').forEach(
+    (n) => n.addEventListener('click', () => {
+        contact.classList.toggle('hidden');
+        form.classList.toggle('hidden');
+    })
+);
+
+
+document.querySelectorAll('.nav-item').forEach(
+    (n) => n.addEventListener('click', () => {
+     burgerMenu.classList.remove('burger-menu-toggled');
+     burgerMenu.setAttribute('data-toggled', 'false');
+     burgerMenu.classList.remove('open');
+     menu.classList.remove('toggled-menu');
+    })
+);
+
+
+
