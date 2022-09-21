@@ -120,6 +120,7 @@ nav {
 .burger-menu {
   border: none;
   box-shadow: none;
+  z-index: 2;
 }
 
 nav > ul {
@@ -134,6 +135,21 @@ nav > ul {
 footer {
   padding: 20px;
   border: 5px solid black;
+}
+
+.nav-menu {
+  display: none;
+}
+
+.toggled-menu {
+  display: block;
+  position: absolute;
+  right: 10px;
+  padding-top: 60px;
+}
+
+.toggled-menu > li {
+  padding-bottom: 10px;
 }
 
 @media screen and (min-width: 768px) {
