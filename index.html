@@ -12,22 +12,46 @@
 </head>
 
 <body>
+  <header>
+    <nav>
+      <div>Awesome Books</div>
+      <button type="button" class="burger-menu" data-toggled="false">
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
+      </button>
+      <ul class="nav-menu">
+        <li class="nav-item">List</li>
+        <li class="nav-item">Add new</li>
+        <li class="nav-item">Contact</li>
+      </ul>
+    </nav>
+  </header>
   <main id="main">
     <h1 class="title">
-      All awesome books
     </h1>
     <section id="books">
     </section>
     <div class="divider"></div>
     <section id="form">
       <form action="#">
-        <h2 class="form_heading">add a new book</h2>
         <input type="text" placeholder="Title" name="title" id="title" required>
         <input type="text" placeholder="Author" name="author" id="author" required>
         <button type="submit">Add</button>
       </form>
     </section>
+    <section id="contact-info" class="contact-info">
+      <p>Do you have any questions or do you just want to say "Hello?" <br>
+        You can reach out to us !
+      </p>
+      <ul>
+        <li>Our email: mail@mail.com</li>
+        <li>Our phone number: 0043586534422</li>
+        <li>Our address: Streetname 22, 84503 City, Country</li>
+      </ul>
+    </section>
   </main>
+  <footer>Copyrights ...</footer>
 </body>
 
 </html>
