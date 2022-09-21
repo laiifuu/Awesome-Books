@@ -89,10 +89,26 @@ burgerMenu.addEventListener('click',() => {
 
 document.querySelectorAll('.one').forEach(
     (n) => n.addEventListener('click', () => {
-        contact.classList.toggle('hidden');
-        form.classList.toggle('hidden');
+        booksSection.classList.toggle('active'); 
+        booksSection.classList.toggle('hidden'); 
     })
 );
+
+document.querySelectorAll('.two').forEach(
+  (n) => n.addEventListener('click', () => {
+    form.classList.toggle('active'); 
+    form.classList.toggle('hidden'); 
+  })
+);
+
+document.querySelectorAll('.three').forEach(
+  (n) => n.addEventListener('click', () => {
+      contact.classList.toggle('active'); 
+      contact.classList.toggle('hidden');
+  })
+);
+
+
 
 
 document.querySelectorAll('.nav-item').forEach(
