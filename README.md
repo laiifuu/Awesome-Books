@@ -4,10 +4,6 @@
 
 > This project is a simple library that displays a list of books which can be added and removed by the users.
 
-## Preview
-
-
-
 ## Built With
 
 - HTML
