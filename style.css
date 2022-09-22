@@ -1,6 +1,5 @@
-
 * {
-  font-family: 'Comic Neue', cursive;
+  font-family: "Comic Neue", cursive;
   font-weight: 600;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -8,20 +7,28 @@
   padding: 0;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
 #main {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   gap: 20px;
+  padding: 20px;
 }
 
-#books {
+.books {
   border: 5px solid black;
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 100%;
 }
 
 .book {
@@ -29,6 +36,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  width: 100%;
 }
 
 #books :nth-of-type(even) {
@@ -47,11 +55,15 @@ button {
   border: 2px solid black;
 }
 
+#form {
+  width: 100%;
+}
+
 form {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 40vh;
+  width: 100%;
   align-items: center;
 }
 
@@ -63,4 +75,127 @@ input {
 
 form > button {
   align-self: flex-end;
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  display: flex;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.line {
+  width: 40px;
+  height: 6px;
+  background-color: black;
+  transition: all 0.3s ease-in-out;
+}
+
+.line1 {
+  transform: translateY(-6px);
+}
+
+.line3 {
+  transform: translateY(6px);
+}
+
+.open .line1 {
+  transform: translateY(6px) rotateZ(-45deg);
+}
+
+.open .line2 {
+  opacity: 0;
+}
+
+.open .line3 {
+  transform: translateY(-6px) rotateZ(45deg);
+}
+
+header {
+  padding: 20px;
+  border: 5px solid black;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.burger-menu {
+  border: none;
+  box-shadow: none;
+  z-index: 2;
+}
+
+nav > ul {
+  list-style: none;
+}
+
+#contact-info > ul {
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+footer {
+  padding: 20px;
+  border: 5px solid black;
+}
+
+.nav-menu {
+  display: none;
+}
+
+.toggled-menu {
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 60px;
+  background-color: #ddd;
+  border: 5px solid black;
+}
+
+.toggled-menu > li {
+  padding: 10px;
+}
+
+time {
+  align-self: center;
+}
+
+@media screen and (min-width: 768px) {
+  time {
+    align-self: flex-end;
+    margin-right: 20px;
+  }
+
+  .burger-menu {
+    display: none;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 10px;
+  }
+
+  .nav-item {
+    border-right: 2px solid black;
+    padding-right: 10px;
+    cursor: pointer;
+  }
+
+  .nav-menu :nth-child(3) {
+    border: none;
+  }
+
+  #main {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
