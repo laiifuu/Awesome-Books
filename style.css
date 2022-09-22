@@ -7,11 +7,11 @@
   padding: 0;
 }
 
-body{
+body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height:100vh;
+  height: 100vh;
 }
 
 #main {
@@ -156,8 +156,7 @@ footer {
   position: absolute;
   right: 10px;
   top: 60px;
-  
-  background-color:#ddd;
+  background-color: #ddd;
   border: 5px solid black;
 }
 
@@ -170,10 +169,11 @@ time {
 }
 
 @media screen and (min-width: 768px) {
-  time{
+  time {
     align-self: flex-end;
     margin-right: 20px;
   }
+
   .burger-menu {
     display: none;
   }
