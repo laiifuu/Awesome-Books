@@ -9,41 +9,41 @@ class Library {
       author,
     };
     this.booksList.push(book);
-    localStorage.setItem('bookList', JSON.stringify(this.booksList));
+    localStorage.setItem("bookList", JSON.stringify(this.booksList));
   }
 
   removeBook(title, author) {
     this.booksList = this.booksList.filter(
-      (item) => item.title !== title && item.author !== author,
+      (item) => item.title !== title && item.author !== author
     );
   }
 
   createBookDiv(book) {
-    const div = document.createElement('div');
-    div.className = 'book';
+    const div = document.createElement("div");
+    div.className = "book";
     div.innerHTML = `<p>"${book.title}" by ${book.author}</p>
       <button class="remove-btn">Remove</button>`;
 
-    const removeBtn = div.querySelector('.remove-btn');
-    removeBtn.addEventListener('click', () => {
+    const removeBtn = div.querySelector(".remove-btn");
+    removeBtn.addEventListener("click", () => {
       this.removeBook(book.title, book.author);
       div.remove();
-      localStorage.setItem('bookList', JSON.stringify(this.booksList));
+      localStorage.setItem("bookList", JSON.stringify(this.booksList));
     });
     return div;
   }
 }
 
-const title = document.querySelector('#title');
-const author = document.querySelector('#author');
-const form = document.getElementById('form');
-const booksSection = document.getElementById('books');
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const form = document.getElementById("form");
+const booksSection = document.getElementById("books");
 
 const library = new Library();
 
-window.addEventListener('load', () => {
-  if (localStorage.getItem('bookList')) {
-    library.booksList = JSON.parse(localStorage.getItem('bookList'));
+window.addEventListener("load", () => {
+  if (localStorage.getItem("bookList")) {
+    library.booksList = JSON.parse(localStorage.getItem("bookList"));
     if (library.booksList.length !== 0) {
       library.booksList.forEach((item) => {
         const newBook = library.createBookDiv(item);
@@ -53,72 +53,75 @@ window.addEventListener('load', () => {
   }
 });
 
-form.addEventListener('submit', (e) => {
+form.addEventListener("submit", (e) => {
   library.addBook(title.value, author.value);
   const obj = {
     title: title.value,
     author: author.value,
   };
-  title.value = '';
-  author.value = '';
+  title.value = "";
+  author.value = "";
   const newBookDiv = library.createBookDiv(obj);
 
   booksSection.append(newBookDiv);
   e.preventDefault();
 });
 
-const burgerMenu = document.getElementById('burger-menu');
-const menu = document.querySelector('.nav-menu');
-const menuItems = document.querySelectorAll('.nav-item');
-const contact =document.getElementById('contact-info');
+const burgerMenu = document.getElementById("burger-menu");
+const menu = document.querySelector(".nav-menu");
+const menuItems = document.querySelectorAll(".nav-item");
+const contact = document.getElementById("contact-info");
+const sectionTitle = document.querySelector('.title');
 
-
-
-burgerMenu.addEventListener('click',() => {
-    if (burgerMenu.getAttribute('data-toggled') === 'false') {
-        burgerMenu.classList.add('open');
-        burgerMenu.setAttribute('data-toggled', 'true');
-      } else {
-        burgerMenu.classList.remove('open');
-        burgerMenu.setAttribute('data-toggled', 'false');
-      }
-      burgerMenu.classList.toggle('burger-menu-toggled');
-      menu.classList.toggle('toggled-menu');
-    //   body.classList.toggle('no-scroll');
+burgerMenu.addEventListener("click", () => {
+  if (burgerMenu.getAttribute("data-toggled") === "false") {
+    burgerMenu.classList.add("open");
+    burgerMenu.setAttribute("data-toggled", "true");
+  } else {
+    burgerMenu.classList.remove("open");
+    burgerMenu.setAttribute("data-toggled", "false");
+  }
+  burgerMenu.classList.toggle("burger-menu-toggled");
+  menu.classList.toggle("toggled-menu");
 });
 
-document.querySelectorAll('.one').forEach(
-    (n) => n.addEventListener('click', () => {
-        booksSection.classList.toggle('active'); 
-        booksSection.classList.toggle('hidden'); 
-    })
-);
 
-document.querySelectorAll('.two').forEach(
-  (n) => n.addEventListener('click', () => {
-    form.classList.toggle('active'); 
-    form.classList.toggle('hidden'); 
+menuItems.forEach((n) =>
+  n.addEventListener("click", () => {
+    burgerMenu.classList.remove("burger-menu-toggled");
+    burgerMenu.setAttribute("data-toggled", "false");
+    burgerMenu.classList.remove("open");
+    menu.classList.remove("toggled-menu");
+
+    let content = n.innerHTML;
+    switch (content) {
+      case "List":
+        sectionTitle.innerHTML='All awesome books';
+        booksSection.classList.remove("hidden");
+        form.classList.add("hidden");
+        contact.classList.add("hidden");
+        break;
+      case "Add new":
+        sectionTitle.innerHTML = 'Add new';
+        booksSection.classList.add("hidden");
+        form.classList.remove("hidden");
+        contact.classList.add("hidden");
+        break;
+      case "Contact":
+        sectionTitle.innerHTML = 'Contact information';
+        booksSection.classList.add("hidden");
+        form.classList.add("hidden");
+        contact.classList.remove("hidden");
+        break;
+    }
   })
 );
 
-document.querySelectorAll('.three').forEach(
-  (n) => n.addEventListener('click', () => {
-      contact.classList.toggle('active'); 
-      contact.classList.toggle('hidden');
-  })
-);
+const currentTime = document.querySelector('.current-time'); 
 
+function updateTime(){
+  let date = new Date(); 
+  currentTime.innerHTML = `${date.toUTCString()}`;
+}
 
-
-
-document.querySelectorAll('.nav-item').forEach(
-    (n) => n.addEventListener('click', () => {
-     burgerMenu.classList.remove('burger-menu-toggled');
-     burgerMenu.setAttribute('data-toggled', 'false');
-     burgerMenu.classList.remove('open');
-     menu.classList.remove('toggled-menu');
-    })
-);
-
-
-
+setInterval(updateTime, 1000);
